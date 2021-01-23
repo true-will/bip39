@@ -13,14 +13,16 @@ class PBKDF2 {
   PBKDF2KeyDerivator _derivator;
   Uint8List _salt;
 
-  PBKDF2({this.blockLength = 128,
-          this.iterationCount = 2048,
-          this.desiredKeyLength = 64,
-          String salt = "mnemonic"}) {
-    _salt = utf8.encode(salt);
+  PBKDF2(
+      {this.blockLength = 128,
+      this.iterationCount = 2048,
+      this.desiredKeyLength = 64,
+      String salt = "mnemonic",
+      String password = ""}) {
+    _salt = utf8.encode(salt + password);
     _derivator =
-    new PBKDF2KeyDerivator(new HMac(new SHA512Digest(), blockLength))
-      ..init(new Pbkdf2Parameters(_salt, iterationCount, desiredKeyLength));
+        new PBKDF2KeyDerivator(new HMac(new SHA512Digest(), blockLength))
+          ..init(new Pbkdf2Parameters(_salt, iterationCount, desiredKeyLength));
   }
 
   Uint8List process(String mnemonic) {

@@ -57,3 +57,7 @@ main() {
     // => String '00000000000000000000000000000000'
 }
 ```
+
+## Test vectors
+The test vectors include input entropy, mnemonic and seed. The passphrase "TREZOR" is used for all vectors.
+[https://github.com/trezor/python-mnemonic/blob/master/vectors.json](https://github.com/trezor/python-mnemonic/blob/master/vectors.json)
